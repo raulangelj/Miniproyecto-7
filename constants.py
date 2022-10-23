@@ -1,0 +1,7 @@
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
+WIDTH = 361
+HEIGHT = 444
+
+SPEED = 100

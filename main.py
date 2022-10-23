@@ -22,7 +22,7 @@ centro = fuzz.trimf(y_mov, [25, 30, 70])
 arriba = fuzz.trimf(y_mov, [60, 72, 100])
 
 
-'''#Pertenencia para encontrar pelota
+#Pertenencia para encontrar pelota
 fig, (ax0, ax1) = plt.subplots(nrows=2, figsize=(8, 9))
 
 ax0.plot(x_mov, izquierda, 'b', linewidth=1.5, label='Izquierda')
@@ -35,9 +35,9 @@ ax1.plot(y_mov, arriba, 'b', linewidth=1.5, label='Arriba')
 ax1.plot(y_mov, centro, 'g', linewidth=1.5, label='Centro')
 ax1.plot(y_mov, abajo, 'r', linewidth=1.5, label='Abajo')
 ax1.set_title('Posicion Y')
-ax1.legend()'''
+ax1.legend()
 
-'''#Defuzzy para encontrar pelota
+#Defuzzy para encontrar pelota
 fig, (ax0, ax1) = plt.subplots(nrows=2, figsize=(8, 9))
 
 ax0.plot(x_mov, izquierda, 'b', linewidth=1.5, label='Izquierda')
@@ -50,11 +50,11 @@ ax1.plot(y_mov, arriba, 'b', linewidth=1.5, label='Arriba')
 ax1.plot(y_mov, centro, 'g', linewidth=1.5, label='Centro')
 ax1.plot(y_mov, abajo, 'r', linewidth=1.5, label='Abajo')
 ax1.set_title('Movimiento Y')
-ax1.legend()'''
+ax1.legend()
 
 #Pertenencia para patear pelota
 
-'''#Posiciones X pelota
+#Posiciones X pelota
 izquierda = fuzz.trimf(x_mov, [0, 16, 34])
 centro_pelota = fuzz.trimf(x_mov, [25, 30, 70])
 derecha = fuzz.trimf(x_mov, [60, 72, 100])
@@ -68,7 +68,7 @@ arriba_pelota = fuzz.trimf(y_mov, [60, 72, 100])
 centro_porteria = fuzz.trimf(x_mov, [25, 30, 70])
 
 #Posiciones Y porteria
-arriba_porteria = fuzz.trimf(y_mov, [60, 72, 100])'''
+arriba_porteria = fuzz.trimf(y_mov, [60, 72, 100])
 
 #Defuzzy para fuerza
 fuerza = np.arange(0, 100, 1)
@@ -86,7 +86,7 @@ ax0.plot(fuerza, duro, 'r', linewidth=1.5, label='Duro')
 ax0.set_title('Fuerza pelota')
 ax0.legend()
 
-'''fig, (ax0, ax1, ax2, ax3) = plt.subplots(nrows=4, figsize=(8, 9))
+fig, (ax0, ax1, ax2, ax3) = plt.subplots(nrows=4, figsize=(8, 9))
 
 ax0.plot(x_mov, izquierda, 'b', linewidth=1.5, label='Izquierda')
 ax0.plot(x_mov, derecha, 'g', linewidth=1.5, label='Derecha')
@@ -115,7 +115,7 @@ for ax in (ax0, ax1, ax2, ax3):
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.get_xaxis().tick_bottom()
-    ax.get_yaxis().tick_left()'''
+    ax.get_yaxis().tick_left()
 
 plt.tight_layout()
 plt.show()
