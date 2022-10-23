@@ -58,11 +58,11 @@ font = pygame.font.Font('freesansbold.ttf', 32)
 text = font.render('GOAL!', True, RED, BLACK)
 textRect = text.get_rect()
 textRect.center = (WIDTH // 2, HEIGHT // 2)
-while game_on:
+while game_on: #Start of game
 	screen.blit(background, (0, 0))
 	g.draw_ball(x_ball, y_ball)
 	g.draw_player(x_player, y_player)
-	
+
 	if not continue_game:
 		screen.blit(text, textRect)
 
@@ -185,13 +185,12 @@ while game_on:
 			y_player += y_ball - y_player
 
 
-	#check if they are the same
 	if move_ball and continue_game:
 
 		#PROCESO PARA FUERZA
 		#Pertenencia para patear pelota
 
-			#Posiciones X
+			#Posiciones X pelota
 		izquierda_x_fuerza = fuzz.trimf(x_mov, [0, 10, 150])
 		centro_fuerza = fuzz.trimf(x_mov, [120, 170, 240])
 		derecha_fuerza = fuzz.trimf(x_mov, [200, 300, 400])

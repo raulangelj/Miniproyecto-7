@@ -22,7 +22,7 @@ centro = fuzz.trimf(y_mov, [120, 170, 240])
 arriba = fuzz.trimf(y_mov, [200, 300, 400])
 
 
-#Pertenencia para encontrar pelota
+'''#Pertenencia para encontrar pelota
 fig, (ax0, ax1) = plt.subplots(nrows=2, figsize=(8, 9))
 
 ax0.plot(x_mov, izquierda, 'b', linewidth=1.5, label='Izquierda')
@@ -35,10 +35,10 @@ ax1.plot(y_mov, arriba, 'b', linewidth=1.5, label='Arriba')
 ax1.plot(y_mov, centro, 'g', linewidth=1.5, label='Centro')
 ax1.plot(y_mov, abajo, 'r', linewidth=1.5, label='Abajo')
 ax1.set_title('Posicion Y')
-ax1.legend()
-'''
+ax1.legend()'''
 
-#Defuzzy para encontrar pelota
+
+'''#Defuzzy para encontrar pelota
 fig, (ax0, ax1) = plt.subplots(nrows=2, figsize=(8, 9))
 
 ax0.plot(x_mov, izquierda, 'b', linewidth=1.5, label='Izquierda')
@@ -51,41 +51,43 @@ ax1.plot(y_mov, arriba, 'b', linewidth=1.5, label='Arriba')
 ax1.plot(y_mov, centro, 'g', linewidth=1.5, label='Centro')
 ax1.plot(y_mov, abajo, 'r', linewidth=1.5, label='Abajo')
 ax1.set_title('Movimiento Y')
-ax1.legend()
+ax1.legend()'''
 
-#Pertenencia para patear pelota
+'''#Pertenencia para patear pelota
 
 #Posiciones X pelota
-izquierda = fuzz.trimf(x_mov, [0, 16, 34])
-centro_pelota = fuzz.trimf(x_mov, [25, 30, 70])
-derecha = fuzz.trimf(x_mov, [60, 72, 100])
+izquierda = fuzz.trimf(x_mov, [0, 10, 150])
+centro_pelota = fuzz.trimf(x_mov, [120, 170, 240])
+derecha = fuzz.trimf(x_mov, [200, 300, 400])
 
 #Posiciones Y pelota
-abajo = fuzz.trimf(y_mov, [0, 16 , 34])
-centro = fuzz.trimf(y_mov, [25, 30, 70])
-arriba_pelota = fuzz.trimf(y_mov, [60, 72, 100])
+abajo = fuzz.trimf(y_mov, [0, 10 , 150])
+centro = fuzz.trimf(y_mov, [120, 170, 240])
+arriba_pelota = fuzz.trimf(y_mov, [200, 300, 400])
 
 #Posiciones X porteria
-centro_porteria = fuzz.trimf(x_mov, [25, 30, 70])
+centro_porteria = fuzz.trimf(x_mov, [120, 170, 240])
 
 #Posiciones Y porteria
-arriba_porteria = fuzz.trimf(y_mov, [60, 72, 100])
+arriba_porteria = fuzz.trimf(y_mov, [200, 300, 400])'''
 
 #Defuzzy para fuerza
-fuerza = np.arange(0, 100, 1)
-suave = fuzz.trimf(fuerza, [0, 16, 34])
-centro_fuerza = fuzz.trimf(fuerza, [25, 30, 70]) #cambiar a normal
-duro = fuzz.trimf(fuerza, [60, 72, 100])
+fuerza = np.arange(0, 400, 1)
+suave = fuzz.trimf(fuerza, [0, 10, 150])
+normal = fuzz.trimf(fuerza, [120, 170, 240])
+duro = fuzz.trimf(fuerza, [200, 300, 400])
 
 #Graficar fuerza
 fig, (ax0) = plt.subplots(nrows=1, figsize=(8, 9))
 
 
 ax0.plot(fuerza, suave, 'b', linewidth=1.5, label='Suave')
-ax0.plot(fuerza, centro_fuerza, 'g', linewidth=1.5, label='Centro')
+ax0.plot(fuerza, normal, 'g', linewidth=1.5, label='Normal')
 ax0.plot(fuerza, duro, 'r', linewidth=1.5, label='Duro')
 ax0.set_title('Fuerza pelota')
 ax0.legend()
+
+'''#Graficar pertenencia
 
 fig, (ax0, ax1, ax2, ax3) = plt.subplots(nrows=4, figsize=(8, 9))
 
@@ -116,8 +118,8 @@ for ax in (ax0, ax1, ax2, ax3):
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.get_xaxis().tick_bottom()
-    ax.get_yaxis().tick_left()
+    ax.get_yaxis().tick_left()'''
 
-'''
+
 plt.tight_layout()
 plt.show()
