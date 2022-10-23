@@ -7,19 +7,19 @@ import numpy as np
 import skfuzzy as fuzz
 import matplotlib.pyplot as plt
 
-x_mov = np.arange(0, 100, 1)
-y_mov = np.arange(0, 100, 1)
+x_mov = np.arange(0, 400, 1)
+y_mov = np.arange(0, 400, 1)
 
 
 #Posiciones X
-izquierda = fuzz.trimf(x_mov, [0, 16, 34])
-centrox = fuzz.trimf(x_mov, [25, 30, 70])
-derecha = fuzz.trimf(x_mov, [60, 72, 100])
+izquierda = fuzz.trimf(x_mov, [0, 60, 150])
+centrox = fuzz.trimf(x_mov, [120, 170, 240])
+derecha = fuzz.trimf(x_mov, [200, 300, 400])
 
 #Posiciones Y
-abajo = fuzz.trimf(y_mov, [0, 16 , 34])
-centro = fuzz.trimf(y_mov, [25, 30, 70])
-arriba = fuzz.trimf(y_mov, [60, 72, 100])
+abajo = fuzz.trimf(y_mov, [0, 60 , 150])
+centro = fuzz.trimf(y_mov, [120, 170, 240])
+arriba = fuzz.trimf(y_mov, [200, 300, 400])
 
 
 #Pertenencia para encontrar pelota
@@ -36,6 +36,7 @@ ax1.plot(y_mov, centro, 'g', linewidth=1.5, label='Centro')
 ax1.plot(y_mov, abajo, 'r', linewidth=1.5, label='Abajo')
 ax1.set_title('Posicion Y')
 ax1.legend()
+'''
 
 #Defuzzy para encontrar pelota
 fig, (ax0, ax1) = plt.subplots(nrows=2, figsize=(8, 9))
@@ -117,5 +118,6 @@ for ax in (ax0, ax1, ax2, ax3):
     ax.get_xaxis().tick_bottom()
     ax.get_yaxis().tick_left()
 
+'''
 plt.tight_layout()
 plt.show()
