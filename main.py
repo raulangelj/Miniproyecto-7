@@ -74,7 +74,7 @@ arriba_porteria = fuzz.trimf(y_mov, [60, 72, 100])
 #Defuzzy para fuerza
 fuerza = np.arange(0, 100, 1)
 suave = fuzz.trimf(fuerza, [0, 16, 34])
-centro_fuerza = fuzz.trimf(fuerza, [25, 30, 70])
+centro_fuerza = fuzz.trimf(fuerza, [25, 30, 70]) #cambiar a normal
 duro = fuzz.trimf(fuerza, [60, 72, 100])
 
 #Graficar fuerza
