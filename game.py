@@ -57,12 +57,10 @@ arriba = fuzz.trimf(y_mov, [200, 300, 400])
 izquierda_index = np.array(np.where(izquierda != 0))
 centrox_idexes = np.array(np.where(centrox != 0))
 derecha_index = np.array(np.where(derecha != 0))
-print('centrox_idexes', centrox_idexes)
 
 abajo_indexes = np.array(np.where(abajo != 0))
 centro_indexes = np.array(np.where(centro != 0))
 arriba_indexes = np.array(np.where(arriba != 0))
-print('centro_indexes', centro_indexes)
 
 game_on = True
 
@@ -136,8 +134,7 @@ while game_on:
 
 	# calculate defuzzified result
 	move_x = fuzz.defuzz(x_mov, aggregated, 'centroid')
-	# move_x_activation = fuzz.interp_membership(x_mov, aggregated, move_x)  # for plot
-	print('move_x', move_x)
+
 	# we move the y player because the image is rotated
 	y_player = round(move_x)
 
@@ -183,8 +180,7 @@ while game_on:
 
 	# calculate defuzzified result
 	move_y = fuzz.defuzz(y_mov, aggregated, 'centroid')
-	# move_y_activation = fuzz.interp_membership(y_mov, aggregated, move_y)  # for plot
-	print('move_y', move_y)
+
 	# we move the x player because the image is rotated
 	x_player = round(move_y)
 
