@@ -22,27 +22,6 @@ g = Soccer(screen)
 x_mov = np.arange(0, HEIGHT, 1)
 y_mov = np.arange(0, WIDTH, 1)
 
-# #Posiciones X
-# izquierda = fuzz.trimf(x_mov, [0, 16, 34])
-# centrox = fuzz.trimf(x_mov, [25, 30, 70])
-# derecha = fuzz.trimf(x_mov, [60, 72, WIDTH])
-
-# #Posiciones Y
-# abajo = fuzz.trimf(y_mov, [0, 16 , 34])
-# centro = fuzz.trimf(y_mov, [25, 30, 70])
-# arriba = fuzz.trimf(y_mov, [60, 72, HEIGHT])
-
-
-#Posiciones X
-# izquierda = fuzz.trimf(x_mov, [0, 10, 50])
-# centrox = fuzz.trimf(x_mov, [15, 170, 240])
-# derecha = fuzz.trimf(x_mov, [200, 300, 400])
-
-# #Posiciones Y
-# abajo = fuzz.trimf(y_mov, [0, 10 , 50])
-# centro = fuzz.trimf(y_mov, [15, 170, 240])
-# arriba = fuzz.trimf(y_mov, [200, 300, 400])
-
 #Posiciones X
 izquierda = fuzz.trimf(x_mov, [0, 10, 150])
 centrox = fuzz.trimf(x_mov, [120, 170, 240])
@@ -73,12 +52,21 @@ y_player = 200
 x_goal = 200
 y_goal = 399
 move_ball = False
+continue_game = True
+
+font = pygame.font.Font('freesansbold.ttf', 32)
+text = font.render('GOAL!', True, RED, BLACK)
+textRect = text.get_rect()
+textRect.center = (WIDTH // 2, HEIGHT // 2)
 while game_on:
 	screen.blit(background, (0, 0))
 	g.draw_ball(x_ball, y_ball)
 	g.draw_player(x_player, y_player)
+	
+	if not continue_game:
+		screen.blit(text, textRect)
 
-	if move_ball==False:
+	if move_ball==False and continue_game:
 
 		# find the ball x
 		izquierda_level_x_ball = fuzz.interp_membership(x_mov, izquierda, x_ball)
@@ -198,7 +186,7 @@ while game_on:
 
 
 	#check if they are the same
-	if move_ball:
+	if move_ball and continue_game:
 
 		#PROCESO PARA FUERZA
 		#Pertenencia para patear pelota
@@ -214,7 +202,7 @@ while game_on:
 		arriba_fuerza = fuzz.trimf(y_mov, [200, 300, 400])
 
 		#Posiciones X porteria
-		centro_porteria = fuzz.trimf(x_mov, [0, 170, 240])
+		centro_porteria = fuzz.trimf(x_mov, [120, 170, 240])
 
 		#Posiciones Y porteria
 		arriba_porteria = fuzz.trimf(y_mov, [200, 300, 400])
@@ -261,7 +249,7 @@ while game_on:
 		fuerza_x = fuzz.defuzz(fuerza, aggregated, 'centroid')
 
 		# we move the x player because the image is rotated
-		x_ball = round(fuerza_x)
+		y_ball = round(fuerza_x)
 
 		#Si py = abajo y poy = arriba entonces fx = Duro
 		active_rule4 = np.fmin(abajo_level_y_ball, arriba_level_y_goal)
@@ -282,17 +270,14 @@ while game_on:
 		fuerza_y = fuzz.defuzz(fuerza, aggregated, 'centroid')
 
 		# we move the x player because the image is rotated
-		y_ball = round(fuerza_y)
+		x_ball = round(fuerza_y)
+		x_ball += y_goal - x_ball - 5
+		y_ball += x_goal - y_ball - 5
+		continue_game = False
+		move_ball = False
 
-		print('antes', x_ball, y_ball, x_goal, y_goal)
-		x_ball += x_goal - x_ball
-		y_ball += y_goal - y_ball
-
-		print(x_ball, y_ball, x_goal, y_goal)
 
 	if x_ball == x_player and y_ball == y_player:
-
-
 		move_ball = True
 
 	for event in pygame.event.get():
